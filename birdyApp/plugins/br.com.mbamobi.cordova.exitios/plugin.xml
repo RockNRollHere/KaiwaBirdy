@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+           id="br.com.mbamobi.cordova.exitios"
+           version="1.0.0">
+
+  <name>ExitApp para IOS</name>
+  <description>Implements navigator.app.exitApp on IOS (Apenas para Enterprise)</description>
+  <license>Apache 2.0</license>
+  <keywords>cordova,terminate</keywords>
+
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="ExitApp">
+        <param name="ios-package" value="ExitApp" />
+      </feature>
+    </config-file>
+    <js-module src="www/ExitApp.js" name="exitApp">
+        <merges target="navigator.app" />
+     </js-module>
+    <header-file src="src/ios/ExitApp.h" />
+    <source-file src="src/ios/ExitApp.m" />
+  </platform>
+</plugin>
