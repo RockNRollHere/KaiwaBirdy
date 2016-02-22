@@ -98,15 +98,122 @@ angular.module('birdyApp.controllers', [])
         $state.go('luckly');
       }
 
+      $scope.goHelp = function(){
+        $state.go('help');
+      }
     }])
 
 
   .controller('lucklyCtrl', ['$scope', '$rootScope', '$stateParams','$state','$ionicPopover', '$ionicLoading', 'util', 'BirdyService', '$cordovaBarcodeScanner', '$cordovaCamera',
     function($scope, $rootScope, $stateParams, $state, $ionicPopover,$ionicLoading, util, BirdyService, $cordovaBarcodeScanner, $cordovaCamera) {
 
+      function rnd(n, m){
+        return Math.floor(Math.random()*(m-n+1)+n)
+      }
 
+      var rotateTimeOut = function (){
+        $('#rotate').rotate({
+          angle:0,
+          animateTo:2160,
+          duration:8000,
+          callback:function (){
+            alert('网络超时，请检查您的网络设置！');
+          }
+        });
+      };
+
+
+      var itemp = rnd(1,8);
+      console.log(itemp);
+
+      var bRotate = false;
+
+      var rotateFn = function (angles, txt){
+        bRotate = !bRotate;
+        $('#rotate').stopRotate();
+        $('#rotate').rotate({
+          angle:0,
+          animateTo:angles+1800,
+          duration:8000,
+          callback:function (){
+            //alert(txt);
+            setTimeout(function(){
+              bRotate = !bRotate;
+              $rootScope.award = itemp;
+              if(itemp < 6){
+                $state.go('winner');
+              }else{
+                $state.go('loser');
+              }
+            },1000);
+
+          }
+        })
+      };
+      var item = -1;
+      $('.pointer').click(function (){
+
+        if(bRotate)return;
+        //rnd(0,7);
+        //item++;
+        //if(item == 8){
+        //  item = 0;
+        //}
+
+        //var itemp = 6;
+        var item = itemp - 1;
+
+
+        var angle;
+        var angle1 = [336, 246, 156, 22 ,112]; // 1, 2, 3, 4, 5 等奖
+        var angle2 = [291, 202, 67];  //没有奖
+
+        if(item < 5){
+
+          angle = angle1[item];
+
+        }else{
+          var rand = 2; //rnd(0,2);
+          angle = angle2[rand];
+        }
+
+        rotateFn(angle, item);
+
+
+        console.log(item);
+      });
+
+      $scope.goHome = function(){
+        bRotate = false;
+        $state.go('home');
+      }
 
     }])
+
+  .controller('winnerCtrl', ['$scope', '$rootScope', '$stateParams','$state','$ionicPopover', '$ionicLoading',
+    function($scope, $rootScope, $stateParams, $state, $ionicPopover,$ionicLoading) {
+
+      $scope.goHome = function(){
+        $state.go('home');
+      }
+
+    }])
+
+  .controller('loserCtrl', ['$scope', '$rootScope', '$stateParams','$state','$ionicPopover', '$ionicLoading',
+    function($scope, $rootScope, $stateParams, $state, $ionicPopover,$ionicLoading) {
+      $scope.goHome = function(){
+        $state.go('home');
+      }
+
+    }])
+
+  .controller('helpCtrl', ['$scope', '$rootScope', '$stateParams','$state','$ionicPopover', '$ionicLoading',
+    function($scope, $rootScope, $stateParams, $state, $ionicPopover,$ionicLoading) {
+      $scope.goHome = function(){
+        $state.go('home');
+      }
+    }])
+
   .controller('cameraCtrl', ['$scope', '$rootScope', '$stateParams','$state', '$ionicPopover', '$ionicLoading','Camera', 'util', 'BirdyService', '$cordovaBarcodeScanner', '$cordovaCamera',
     function($scope, $rootScope, $stateParams,$state, $ionicPopover,$ionicLoading,Camera, util, BirdyService, $cordovaBarcodeScanner, $cordovaCamera) {
 

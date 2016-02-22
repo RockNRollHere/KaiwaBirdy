@@ -89,6 +89,29 @@ angular.module('birdyApp', ['ionic', 'birdyApp.controllers', 'birdyApp.services'
         controller: 'lucklyCtrl'
       })
 
+      .state('winner', {
+        cache: false,
+        url: '/winner',
+        templateUrl: 'templates/winner.html',
+        controller: 'winnerCtrl'
+      })
+
+      .state('loser', {
+        cache: false,
+        url: '/loser',
+        templateUrl: 'templates/loser.html',
+        controller: 'loserCtrl'
+      })
+
+      .state('help', {
+        cache: false,
+        url: '/help',
+        templateUrl: 'templates/help.html',
+        controller: 'helpCtrl'
+      })
+
+
+
       .state('camera', {
         cache: false,
         url: '/camera',

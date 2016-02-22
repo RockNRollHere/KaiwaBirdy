@@ -1,0 +1,41 @@
+<ion-view view-title="抽選" id="winnerPage">
+  <ion-header-bar class="bar bar-header bar-calm" align-title="center">
+    <div class="button white_btn button-icon" ng-click="goHome();"><i class="icon ion-chevron-left"></i></div>
+    <div class="title">抽選</div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="winner_content">
+      <div class="winner_content_c">
+        <img src="img/win_01.png" class="c_bg" alt=""/>
+        <div class="winner_content_cc">
+          <div class="winner_content_ccc">
+            <img class="winner_bg" src="img/win_02.png"  alt=""/>
+            <img class="winner_num" src="img/win_{{award}}.png" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="winner_code">
+        <p>あなたのプレゼント交換Noは</p>
+        <p id="code" class="code">4FGR664GR5</p>
+      </div>
+
+      <div class="middle_item">
+        <div class="middle_content_t">交換方法</div>
+        <div class="middle_content_t_b"></div>
+        <div class="middle_content_c middle_content_c_4">交換時間 : XX年XX月XX日̶XX年XX月XX日
+          <br />
+          交換場所:鳥取県鳥取市栄町606 まるもビル5F<br />
+          受付電話番号:0857-39-2111
+       </div>
+      </div>
+
+    </div>
+
+  </ion-content>
+  <!--<ion-footer-bar>-->
+  <!--&lt;!&ndash;<button class="button button-block button-calm" data-ng-click="submit(filterData.filter)">Add</button>&ndash;&gt;-->
+  <!--&lt;!&ndash;<div class="footer_center"><img ng-click="getCamera()" class="" src="img/camera_btn_nor.png" /><img ng-click="scanBarcode()" class="" src="img/QR_btn__nor.png" /></div>&ndash;&gt;-->
+  <!--</ion-footer-bar>-->
+</ion-view>
+
