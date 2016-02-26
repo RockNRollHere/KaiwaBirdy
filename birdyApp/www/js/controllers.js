@@ -44,8 +44,140 @@ angular.module('birdyApp.controllers', [])
 
     }])
 
-  .controller('homeCtrl', ['$scope', '$rootScope', '$stateParams','$state','$ionicPopover', '$ionicLoading', 'util', 'BirdyService', '$cordovaBarcodeScanner', '$cordovaCamera',
-    function($scope, $rootScope, $stateParams, $state, $ionicPopover,$ionicLoading, util, BirdyService, $cordovaBarcodeScanner, $cordovaCamera) {
+  .controller('homeCtrl', ['$scope', '$rootScope','$http', '$resource', '$stateParams','$state','$ionicPopover', '$ionicLoading', 'util', 'BirdyService', '$cordovaDevice', '$cordovaBarcodeScanner', '$cordovaCamera',
+    function($scope, $rootScope,$http, $resource, $stateParams, $state, $ionicPopover,$ionicLoading, util, BirdyService,$cordovaDevice, $cordovaBarcodeScanner, $cordovaCamera) {
+
+      //document.addEventListener("deviceready", function () {
+      //
+      //  var device = $cordovaDevice.getDevice();
+      //
+      //  var cordova = $cordovaDevice.getCordova();
+      //
+      //  var model = $cordovaDevice.getModel();
+      //
+      //  var platform = $cordovaDevice.getPlatform();
+      //
+      //  var uuid = $cordovaDevice.getUUID();
+      //
+      //  var version = $cordovaDevice.getVersion();
+      //
+      //  $scope.uuid1= uuid;
+      //  console.log(device,cordova, uuid );
+      //
+      //}, false);
+      //
+      //try{
+      //
+      //  console.log($cordovaDevice.getUUID());
+      //
+      //  $scope.uuid2 = $cordovaDevice.getUUID();
+      //}catch(error){
+      //  console.log(error);
+      //}
+      //
+      //try{
+      //window.plugins.uniqueDeviceID.get(function(uuid){
+      // console.log(222);
+      //  console.log(uuid);
+      //  $scope.uuid3 = uuid;
+      //}, function(error){
+      //  $scope.uuid3 = error;
+      //});
+      //}catch(error){
+      //  console.log(error);
+      //}
+
+     //var param = {fName : 'get_number'}
+     //
+     // console.log($scope.res);
+     // var res = $resource(SERVICE_CONTEXT+'?fName=get_number');
+     // var result = res.save({},function(response){
+     //   console.log(response);
+     //
+     //
+     // });
+
+      //$http.get(SERVICE_CONTEXT+'?fName=get_number').success(function(data, status, headers, config){
+      //  alert("success");
+      //  console.log(data);
+      //}).error(function(data, status, headers, config){
+      //  alert("error");
+      //})
+
+      $rootScope.itemsStatus = [false,false,false,false,false,false,false];
+      $rootScope.uuid = '';
+      $scope.showButton = false;
+      $rootScope.winstatus = 0;
+      $rootScope.prizeNum = '';
+      // get UUID
+
+      if(!localStorage.uuid){
+        localStorage.uuid = Math.ceil(Math.random()*1000000000);
+      }
+      $rootScope.uuid = localStorage.uuid;
+      //$rootScope.uuid = 'sdfsadfdsfsfas23131234fsaf';
+
+      console.log('uuid : ', $rootScope.uuid);
+
+      $http.get(SERVICE_CONTEXT+'?fName=get_user_sta&userId='+$rootScope.uuid).success(function(data, status, headers, config){
+        console.log('##### get_user_sta #####');
+        console.log(data.replace(/"/g, ""));
+        var res = data.replace(/"/g, "").split(',');
+        if(res.length <= 1){
+          return false;
+        }else{
+          console.log('res[0]', res[0]);
+          if(res[0] == 0){
+            console.log('##### get_user_sta 1 #####');
+            initPage();
+            $rootScope.winstatus = 0;
+            $rootScope.prizeNum = '';
+          }else{
+            $scope.item1 = true;
+            $scope.item2 = true;
+            $scope.item3 = true;
+            $scope.item4 = true;
+            $scope.item5 = true;
+            $scope.item6 = true;
+            $scope.item7 = true;
+            $rootScope.itemsStatus = [true,true,true,true,true,true,true];
+            localStorage.itemsStatus =JSON.stringify($rootScope.itemsStatus);
+            $rootScope.winstatus = 1;
+            $rootScope.prizeNum = res[1];
+          }
+          if ($scope.item1 && $scope.item2 && $scope.item3 && $scope.item4 && $scope.item5 && $scope.item6 && $scope.item7){
+            $scope.showButton = true;
+          }
+          //$scope.showButton = true;
+        }
+      }).error(function(data, status, headers, config){
+        alert("error");
+      });
+
+
+
+      //if(device.uuid){
+      //  $rootScope.uuid = device.uuid;
+      //}
+
+
+
+      var initPage = function(){
+        if(!localStorage.itemsStatus){
+          localStorage.itemsStatus = JSON.stringify($rootScope.itemsStatus);
+
+        }else{
+          $rootScope.itemsStatus = JSON.parse(localStorage.itemsStatus);
+        }
+        $scope.item1 = $rootScope.itemsStatus[0];
+        $scope.item2 = $rootScope.itemsStatus[1];
+        $scope.item3 = $rootScope.itemsStatus[2];
+        $scope.item4 = $rootScope.itemsStatus[3];
+        $scope.item5 = $rootScope.itemsStatus[4];
+        $scope.item6 = $rootScope.itemsStatus[5];
+        $scope.item7 = $rootScope.itemsStatus[6];
+      }
+
 
       $scope.showDetailPopup = function(num) {
         var url = 'templates/popups/pop_cont_' + num + '.html';
@@ -60,22 +192,64 @@ angular.module('birdyApp.controllers', [])
       $scope.hideDetailPopup = function(){
         $scope.popover.hide();
       }
-      $scope.showButton = true;
+
+
 
 
       $scope.scanBarcode = function() {
         $cordovaBarcodeScanner.scan().then(function(imageData) {
-          $ionicLoading.show({
-            template: '<ion-spinner icon="circles" class="spinner-energized"></ion-spinner>',
-            noBackdrop: true
-          });
+          //$ionicLoading.show({
+          //  template: '<ion-spinner icon="circles" class="spinner-energized"></ion-spinner>',
+          //  noBackdrop: true
+          //});
           var sku = imageData.text;
 
           if(!imageData || !imageData.text|| imageData.text == ''){
             $ionicLoading.hide();
             return false;
           }
+
           $scope.text1 = sku;
+
+          if(ItemSource && ItemSource.length > 0){
+            for(var i=0; i<ItemSource.length; i++){
+              if(sku == ItemSource[i]) {
+                switch (i) {
+                  case 0 :
+                    $scope.item1 = true;
+                    break;
+                  case 1 :
+                    $scope.item2 = true;
+                    break;
+                  case 2 :
+                    $scope.item3 = true;
+                    break;
+                  case 3 :
+                    $scope.item4 = true;
+                    break;
+                  case 4 :
+                    $scope.item5 = true;
+                    break;
+                  case 5 :
+                    $scope.item6 = true;
+                    break;
+                  case 6 :
+                    $scope.item7 = true;
+                    break;
+                  default :
+                    break;
+
+                }
+                if ($scope.item1 && $scope.item2 && $scope.item3 && $scope.item4 && $scope.item5 && $scope.item6 && $scope.item7){
+                  $scope.showButton = true;
+                }
+
+                $rootScope.itemsStatus[i] = true;
+                localStorage.itemsStatus = JSON.stringify($rootScope.itemsStatus);
+                break;
+              }
+            }
+          }
 
 
         }, function(error) {
@@ -95,7 +269,22 @@ angular.module('birdyApp.controllers', [])
       };
 
       $scope.goLuckly = function(){
-        $state.go('luckly');
+        if($rootScope.prizeNum == ''){
+          $state.go('luckly');
+        } else if($rootScope.prizeNum<=5){
+          $state.go('winner');
+        }else if($rootScope.prizeNum==6){
+          $state.go('loser');
+        }else{
+          $state.go('luckly');
+        }
+        //$http.get(SERVICE_CONTEXT+'?fName=get_number').success(function(data, status, headers, config){
+        //  alert("success");
+        //  console.log(data);
+        //}).error(function(data, status, headers, config){
+        //  alert("error");
+        //});
+
       }
 
       $scope.goHelp = function(){
@@ -104,9 +293,18 @@ angular.module('birdyApp.controllers', [])
     }])
 
 
-  .controller('lucklyCtrl', ['$scope', '$rootScope', '$stateParams','$state','$ionicPopover', '$ionicLoading', 'util', 'BirdyService', '$cordovaBarcodeScanner', '$cordovaCamera',
-    function($scope, $rootScope, $stateParams, $state, $ionicPopover,$ionicLoading, util, BirdyService, $cordovaBarcodeScanner, $cordovaCamera) {
+  .controller('lucklyCtrl', ['$scope', '$rootScope', '$http', '$stateParams','$state','$ionicPopover', '$ionicLoading', 'util', 'BirdyService', '$cordovaBarcodeScanner', '$cordovaCamera',
+    function($scope, $rootScope,$http, $stateParams, $state, $ionicPopover,$ionicLoading, util, BirdyService, $cordovaBarcodeScanner, $cordovaCamera) {
 
+
+      $http.get(SERVICE_CONTEXT+'?fName=get_number').success(function(data, status, headers, config){
+        $scope.descItems = data;
+        $scope.descItem1 = data[0];
+        console.log(111111111);
+        console.log(data);
+      }).error(function(data, status, headers, config){
+        alert("error");
+      });
       function rnd(n, m){
         return Math.floor(Math.random()*(m-n+1)+n)
       }
@@ -123,12 +321,12 @@ angular.module('birdyApp.controllers', [])
       };
 
 
-      var itemp = rnd(1,8);
-      console.log(itemp);
+
+
 
       var bRotate = false;
 
-      var rotateFn = function (angles, txt){
+      var rotateFn = function (itemp, angles, txt){
         bRotate = !bRotate;
         $('#rotate').stopRotate();
         $('#rotate').rotate({
@@ -137,9 +335,13 @@ angular.module('birdyApp.controllers', [])
           duration:8000,
           callback:function (){
             //alert(txt);
+            $rootScope.award = itemp;
+            localStorage.award =  itemp;
+            console.log('itemp:',itemp);
             setTimeout(function(){
               bRotate = !bRotate;
-              $rootScope.award = itemp;
+
+              console.log('$rootScope.itemCode:',$rootScope.itemCode);
               if(itemp < 6){
                 $state.go('winner');
               }else{
@@ -150,37 +352,44 @@ angular.module('birdyApp.controllers', [])
           }
         })
       };
-      var item = -1;
+
+
       $('.pointer').click(function (){
 
-        if(bRotate)return;
-        //rnd(0,7);
-        //item++;
-        //if(item == 8){
-        //  item = 0;
-        //}
+        $http.get(SERVICE_CONTEXT+'?fName=set_draw&userId='+$rootScope.uuid).success(function(data, status, headers, config){
+          console.log('####  pointer ####');
+          console.log(data);
+          var res = data.replace(/"/g, "").split(',');
+          var itemp = res[0];
+          $rootScope.itemCode = res[1];
+          localStorage.itemCode = res[1];
+          if(bRotate)return;
 
-        //var itemp = 6;
-        var item = itemp - 1;
-
-
-        var angle;
-        var angle1 = [336, 246, 156, 22 ,112]; // 1, 2, 3, 4, 5 等奖
-        var angle2 = [291, 202, 67];  //没有奖
-
-        if(item < 5){
-
-          angle = angle1[item];
-
-        }else{
-          var rand = 2; //rnd(0,2);
-          angle = angle2[rand];
-        }
-
-        rotateFn(angle, item);
+          var item = itemp - 1;
 
 
-        console.log(item);
+          var angle;
+          var angle1 = [336, 246, 156, 22 ,112]; // 1, 2, 3, 4, 5 等奖
+          var angle2 = [291, 202, 67];  //没有奖
+
+          if(item < 5){
+
+            angle = angle1[item];
+
+          }else{
+            var rand = 2; //rnd(0,2);
+            angle = angle2[rand];
+          }
+
+          rotateFn(itemp,angle, item);
+        }).error(function(data, status, headers, config){
+          alert("error");
+        });
+
+
+
+
+        //console.log(item);
       });
 
       $scope.goHome = function(){
@@ -192,7 +401,9 @@ angular.module('birdyApp.controllers', [])
 
   .controller('winnerCtrl', ['$scope', '$rootScope', '$stateParams','$state','$ionicPopover', '$ionicLoading',
     function($scope, $rootScope, $stateParams, $state, $ionicPopover,$ionicLoading) {
-
+      console.log($rootScope.award);
+      $scope.num = parseInt(localStorage.award);
+      $scope.itemCodeText = localStorage.itemCode;
       $scope.goHome = function(){
         $state.go('home');
       }

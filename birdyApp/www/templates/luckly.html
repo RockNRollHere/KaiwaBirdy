@@ -23,11 +23,11 @@
         <div class="middle_content_t">商品説明</div>
         <div class="middle_content_t_b"></div>
         <div class="middle_content_c middle_content_c_2">
-          一等賞 : XXXXXXXXXXXX 1個 (残り1個)<br />
-          ￼二等賞 : XXXXXXXXXXXX 2個 (残り1個)<br />
-          三等賞 : XXXXXXXXXXXX  3個 (残り2個)<br />
-          四等賞 : XXXXXXXXXXXX  4個 (残り3個)<br />
-          ラッキー賞 : XXXXXXXXXXXX 50份 (残り12個)
+          一等賞 : <span ng-bind="descItems[0].name"></span> 1個 (残り<span ng-bind="descItems[0].number"></span>個)<br />
+          ￼二等賞 : <span ng-bind="descItems[1].name"></span>  2個 (残り<span ng-bind="descItems[1].number"></span>個)<br />
+          三等賞 : <span ng-bind="descItems[2].name"></span>   3個 (残り<span ng-bind="descItems[2].number"></span>個)<br />
+          四等賞 : <span ng-bind="descItems[3].name"></span>   4個 (残り<span ng-bind="descItems[3].number"></span>個)<br />
+          ラッキー賞 : <span ng-bind="descItems[4].name"></span>  50份 (残り<span ng-bind="descItems[4].number"></span>個)
         </div>
       </div>
       <div class="middle_item last">

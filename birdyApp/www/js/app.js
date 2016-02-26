@@ -9,33 +9,33 @@ angular.module('birdyApp', ['ionic', 'birdyApp.controllers', 'birdyApp.services'
   .config(function($httpProvider, config) {
     $httpProvider.defaults.timeout = config.API_TIMEOUT;
     //add api base url for all api calls
-    $httpProvider.interceptors.push(function(config, $q, $injector, $rootScope) {
-      return {
-        request: function(request) {
-          if (request.api) {
-            request.withCredentials = true;
-            request.url = config.REST_SERVICE_BASE_URL + request.url;
-          }
-          if(request.showLoading){
-            $rootScope.Loading = true;
-          }
-          return request;
-        },
-        response: function(response) {
-          $rootScope.Loading = false;
-          return response;
-        },
-        responseError: function(rejection) {
-          $rootScope.Loading = false;
-          if (rejection.config.api && (rejection.status === 401 || rejection.status === 403)) {
-            var $state = $injector.get("$state");
-            $state.go('home');
-            //$state.go(rejection.status === 401 ? 'login' : 'home');
-          }
-          return $q.reject(rejection);
-        }
-      };
-    });
+    //$httpProvider.interceptors.push(function(config, $q, $injector, $rootScope) {
+    //  return {
+    //    request: function(request) {
+    //      if (request.api) {
+    //        request.withCredentials = true;
+    //        request.url = config.REST_SERVICE_BASE_URL + request.url;
+    //      }
+    //      if(request.showLoading){
+    //        $rootScope.Loading = true;
+    //      }
+    //      return request;
+    //    },
+    //    response: function(response) {
+    //      $rootScope.Loading = false;
+    //      return response;
+    //    },
+    //    responseError: function(rejection) {
+    //      $rootScope.Loading = false;
+    //      if (rejection.config.api && (rejection.status === 401 || rejection.status === 403)) {
+    //        var $state = $injector.get("$state");
+    //        $state.go('home');
+    //        //$state.go(rejection.status === 401 ? 'login' : 'home');
+    //      }
+    //      return $q.reject(rejection);
+    //    }
+    //  };
+    //});
   })
   .config(function($ionicConfigProvider) {
     $ionicConfigProvider.views.swipeBackEnabled(false);
@@ -53,6 +53,7 @@ angular.module('birdyApp', ['ionic', 'birdyApp.controllers', 'birdyApp.services'
       //}, 10000);
 
 
+
        //set to either landscape
       screen.lockOrientation('portrait');
 
@@ -65,6 +66,7 @@ angular.module('birdyApp', ['ionic', 'birdyApp.controllers', 'birdyApp.services'
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
+      UUID = window.device.uuid;
 
     });
   })

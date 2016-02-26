@@ -1,18 +1,18 @@
 angular.module('birdyApp.services', ['ngResource'])
   .factory('BirdyService', function ($resource) {
     return $resource('/', {}, {
-      login: {
-        api: true,
-        method: 'POST',
-        url: '/login',
-        showLoading: true
-      },
-      logout: {
-        api: true,
-        method: 'POST',
-        url: '/logout'
-      },
-      getPickList: {
+      //login: {
+      //  api: true,
+      //  method: 'POST',
+      //  url: '/login',
+      //  showLoading: true
+      //},
+      //logout: {
+      //  api: true,
+      //  method: 'POST',
+      //  url: '/logout'
+      //},
+      getNumber: {
         api: true,
         method: 'GET',
         url: '/picklist',

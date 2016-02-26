@@ -215,7 +215,7 @@
 .menuIconItem7, .menuIconItemDone7 { left: 86.3%; top: 57%;}
 
 .menuIconItem {display: block;}
-.menuIconItemDone {display: none;}
+/*.menuIconItemDone {display: none;}*/
 
 .status_choose {
   position: absolute;
