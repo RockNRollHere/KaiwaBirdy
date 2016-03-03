@@ -109,6 +109,7 @@ angular.module('birdyApp.controllers', [])
       $scope.showButton = false;
       $rootScope.winstatus = 0;
       $rootScope.prizeNum = '';
+      $rootScope.singleClick = true;
       // get UUID
 
       if(!localStorage.uuid){
@@ -186,6 +187,8 @@ angular.module('birdyApp.controllers', [])
         }).then(function (popover) {
           $scope.popover = popover;
           $scope.popover.show();
+
+
         });
       };
 
@@ -193,16 +196,85 @@ angular.module('birdyApp.controllers', [])
         $scope.popover.hide();
       }
 
+      $scope.openNewUrl = function(aURl){
+        console.log("url clicked");
+        window.open(aURl, '_blank', 'location=yes');
+        console.log("url clicked");
+      }
 
 
 
       $scope.scanBarcode = function() {
-        $cordovaBarcodeScanner.scan().then(function(imageData) {
-          //$ionicLoading.show({
-          //  template: '<ion-spinner icon="circles" class="spinner-energized"></ion-spinner>',
-          //  noBackdrop: true
-          //});
-          var sku = imageData.text;
+        console.log("scan");
+        //$cordovaBarcodeScanner.scan().then(function(imageData) {
+        //  //$ionicLoading.show({
+        //  //  template: '<ion-spinner icon="circles" class="spinner-energized"></ion-spinner>',
+        //  //  noBackdrop: true
+        //  //});
+        //  var sku = imageData.text;
+        //
+        //  if(!imageData || !imageData.text|| imageData.text == ''){
+        //    $ionicLoading.hide();
+        //    return false;
+        //  }
+        //
+        //  $scope.text1 = sku;
+        //
+        //  if(ItemSource && ItemSource.length > 0){
+        //    for(var i=0; i<ItemSource.length; i++){
+        //      if(sku == ItemSource[i]) {
+        //        switch (i) {
+        //          case 0 :
+        //            $scope.item1 = true;
+        //            break;
+        //          case 1 :
+        //            $scope.item2 = true;
+        //            break;
+        //          case 2 :
+        //            $scope.item3 = true;
+        //            break;
+        //          case 3 :
+        //            $scope.item4 = true;
+        //            break;
+        //          case 4 :
+        //            $scope.item5 = true;
+        //            break;
+        //          case 5 :
+        //            $scope.item6 = true;
+        //            break;
+        //          case 6 :
+        //            $scope.item7 = true;
+        //            break;
+        //          default :
+        //            break;
+        //
+        //        }
+        //        if ($scope.item1 && $scope.item2 && $scope.item3 && $scope.item4 && $scope.item5 && $scope.item6 && $scope.item7){
+        //          $scope.showButton = true;
+        //        }
+        //
+        //        $rootScope.itemsStatus[i] = true;
+        //        localStorage.itemsStatus = JSON.stringify($rootScope.itemsStatus);
+        //        break;
+        //      }
+        //    }
+        //  }
+        //
+        //
+        //}, function(error) {
+        //  console.log("An error happened -> " + error);
+        //});
+        if($rootScope.singleClick){
+          $rootScope.singleClick = false;
+          cordova.exec(qrSuccess,qrFailure,"qrReaderPlugin","scanAction",[]);
+          setTimeout(function(){
+            $rootScope.singleClick = true;
+          },1000);
+        }
+      };
+
+      function getNativeQRDatax(sku){
+
 
           if(!imageData || !imageData.text|| imageData.text == ''){
             $ionicLoading.hide();
@@ -212,8 +284,8 @@ angular.module('birdyApp.controllers', [])
           $scope.text1 = sku;
 
           if(ItemSource && ItemSource.length > 0){
-            for(var i=0; i<ItemSource.length; i++){
-              if(sku == ItemSource[i]) {
+            for(var i=0; i<ItemSource.length; i++) {
+              if (sku == ItemSource[i]) {
                 switch (i) {
                   case 0 :
                     $scope.item1 = true;
@@ -240,7 +312,7 @@ angular.module('birdyApp.controllers', [])
                     break;
 
                 }
-                if ($scope.item1 && $scope.item2 && $scope.item3 && $scope.item4 && $scope.item5 && $scope.item6 && $scope.item7){
+                if ($scope.item1 && $scope.item2 && $scope.item3 && $scope.item4 && $scope.item5 && $scope.item6 && $scope.item7) {
                   $scope.showButton = true;
                 }
 
@@ -250,12 +322,15 @@ angular.module('birdyApp.controllers', [])
               }
             }
           }
+      }
 
+      function qrSuccess(data){
+        alert(data);
+      }
 
-        }, function(error) {
-          console.log("An error happened -> " + error);
-        });
-      };
+      function qrFailure(data){
+        console.log(data);
+      }
 
       $scope.getCamera = function() {
         //$cordovaCamera.getPicture().then(function(imageData) {
@@ -265,9 +340,21 @@ angular.module('birdyApp.controllers', [])
         //}, function(error) {
         //  console.log("An error happened -> " + error);
         //});
-        $state.go('camera');
+        //Cordova.exec(function (callback) {
+        //}, function () {
+        //}, 'ISupplierHandle', 'openBrowser', [{url:"www.baidu.com"}]);
+
+        cordova.exec(cdCallSuccess,cdCallFailed,"pluginPlugin","openBrowser",[]);
+        //$state.go('camera');
       };
 
+      function cdCallSuccess(){
+        console.log("OK");
+      }
+
+      function cdCallFailed(){
+        console.log("failed");
+      }
       $scope.goLuckly = function(){
         if($rootScope.prizeNum == ''){
           $state.go('luckly');
@@ -289,6 +376,12 @@ angular.module('birdyApp.controllers', [])
 
       $scope.goHelp = function(){
         $state.go('help');
+      }
+
+      $scope.popQR = function(){
+        //$scope.popQR = openway; 
+        alert(openway);
+        console.log("scan finished" + openway);
       }
     }])
 
