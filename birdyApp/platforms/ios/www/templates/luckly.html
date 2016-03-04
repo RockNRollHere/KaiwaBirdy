@@ -1,0 +1,71 @@
+<ion-view view-title="抽選" id="lucklyPage">
+  <ion-header-bar class="bar bar-header bar-calm" align-title="center">
+    <div class="button white_btn button-icon" ng-click="goHome();"><i class="icon ion-chevron-left"></i></div>
+    <div class="title">抽選</div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="luckly_content">
+     <div class="luckly_top_content">
+       <div class="luckly_top_inner">
+         <img id="rotate" class="luckly_turn rotate" src="img/turntable_1.png" alt="" />
+         <img class="luckly_button pointer" src="img/turntable_core.png" alt="" />
+       </div>
+       <img class="luckly_turn2" src="img/turntable_2.png" alt="" />
+       <img class="luckly_turn3" src="img/turntable_3.png" alt="" />
+       <img class="lucklybg" src="img/turntable_bg.png" alt="" />
+     </div>
+  <div class="middle_item">
+    <div class="middle_content_t">遊び方</div>
+    <div class="middle_content_t_b"></div>
+    <div class="middle_content_c middle_content_c_1">真ん中のスタートボダンを押すと<br />ルーレットが回り始めるよ。<br />さぁ素敵な景品を当てよう!</div>
+  </div>
+      <div class="middle_item">
+        <div class="middle_content_t">商品説明</div>
+        <div class="middle_content_t_b"></div>
+        <div class="middle_content_c middle_content_c_2">
+          一等賞 : <span ng-bind="descItems[0].name"></span> 1個 (残り<span ng-bind="descItems[0].number"></span>個)<br />
+          ￼二等賞 : <span ng-bind="descItems[1].name"></span>  2個 (残り<span ng-bind="descItems[1].number"></span>個)<br />
+          三等賞 : <span ng-bind="descItems[2].name"></span>   3個 (残り<span ng-bind="descItems[2].number"></span>個)<br />
+          四等賞 : <span ng-bind="descItems[3].name"></span>   4個 (残り<span ng-bind="descItems[3].number"></span>個)<br />
+          ラッキー賞 : <span ng-bind="descItems[4].name"></span>  50份 (残り<span ng-bind="descItems[4].number"></span>個)
+        </div>
+      </div>
+      <div class="middle_item last">
+        <div class="middle_content_t">免責事項</div>
+        <div class="middle_content_t_b"></div>
+        <div class="middle_content_c middle_content_c_3">
+          本アプリにおける懸賞は、一般財団法人 鳥取県観光<br />事業団が独自に実施するものであり、<br />
+          Apple Inc.およびアップルジャパン株式会社とは一<br />切関係ありません。
+        </div>
+      </div>
+      <!--<div class="middle_item middle_item2">-->
+        <!--<img  src="img/CJ02_1.png" alt="" />-->
+        <!--<div class="middle_item_content_title">-->
+          <!--￼￼商品説明-->
+        <!--</div>-->
+        <!--<div class="middle_item_content">-->
+          <!--￼二等賞:XXXXXXXXXXXX<br />-->
+          <!--三等賞:XXXXXXXXXXXX <br />-->
+          <!--四等賞:XXXXXXXXXXXX <br />-->
+          <!--ラッキー賞:XXXXXXXXXXXX 50份(残り12個)-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="middle_item middle_item3 last">-->
+        <!--<img  src="img/CJ03_1.png" alt="" />-->
+        <!--<div class="middle_item_content_title">-->
+          <!--￼￼￼免責事項-->
+        <!--</div>-->
+        <!--<div class="middle_item_content">-->
+          <!--本アプリにおける懸賞は、一般財団法人 鳥取県観光<br />事業団が独自に実施するものであり、<br />-->
+          <!--Apple Inc.およびアップルジャパン株式会社とは一<br />切関係ありません。-->
+          <!--￼-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  </ion-content>
+  <!--<ion-footer-bar>-->
+    <!--&lt;!&ndash;<button class="button button-block button-calm" data-ng-click="submit(filterData.filter)">Add</button>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="footer_center"><img ng-click="getCamera()" class="" src="img/camera_btn_nor.png" /><img ng-click="scanBarcode()" class="" src="img/QR_btn__nor.png" /></div>&ndash;&gt;-->
+  <!--</ion-footer-bar>-->
+</ion-view>
+

@@ -1,0 +1,30 @@
+<ion-popover-view class="detailPopup">
+  <ion-header-bar align-title="center">
+    <h1 class="title">東郷湖羽合臨海公園</h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="pop_detail_content">
+      <img class="detail_main_img" src="img/menuPop05image.png" alt="" />
+      <h2 class="pop_detail_title"><i class="icon ion-record"></i> 東郷湖羽合臨海公園の概要</h2>
+      <table class="pop_detail_content_table">
+        <tr><th>名称:</th><td>東郷湖羽合臨海公園</td></tr>
+        <tr><th>施設概要:</th><td>鳥取県中部、東郷羽合温泉がある東 郷池を臨む総合公園。スポーツ施設 やこどもの遊び場があり、四季折々
+          の自然を満喫できる。</td></tr>
+        <tr><th>所在地:</th><td>鳥取県東伯郡湯梨浜町藤津650</td></tr>
+        <tr><th>電話:</th><td><a style="color:blue;" href="tel:0858-32-2189">0858-32-2189</a></td></tr>
+        <tr><th>営業時間:</th><td>
+          あやめ池スポーツセンター(公園管 理事務所)<br />
+          <span class="pop_detail_sub">開館時間:</span><br />
+          午前9時~午後10時<br />
+          <span class="pop_detail_sub">休館日:</span><br />
+          毎月第3火曜日(7、8月を除く)<br />
+          12月29日~1月3日<br />
+          ※キャンプ場は7月1日~8月31日ま での期間営業</td></tr>
+        <tr><th>URL:</th><td><button style="border:none;background-color:transparent;color:blue;"  ng-click="openNewUrl('www.geocities.jp/hawaiayame')">www.geocities.jp/hawaiayame</button> </td></tr>
+      </table>
+    </div>
+  </ion-content>
+  <ion-footer-bar>
+    <div class="pop_footer_content" ng-click="hideDetailPopup()">閉じる</div>
+  </ion-footer-bar>
+</ion-popover-view>

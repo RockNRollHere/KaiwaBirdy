@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>21E84956-E0FF-48C4-91CA-B83AD08FA551</string>
+	<key>IDESourceControlProjectName</key>
+	<string>birdyApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D233423E94225CC97B4D5561005DCBA16C7B92F0</key>
+		<string>https://github.com/RockNRollHere/KaiwaBirdy.git</string>
+		<key>D233423E94225CC97B4D5561005DCBA16C7B92F0+++A0C6524</key>
+		<string>https://github.com/RockNRollHere/KaiwaBirdy.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>birdyApp/platforms/ios/birdyApp.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D233423E94225CC97B4D5561005DCBA16C7B92F0</key>
+		<string>../../../../..</string>
+		<key>D233423E94225CC97B4D5561005DCBA16C7B92F0+++A0C6524</key>
+		<string>../../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/RockNRollHere/KaiwaBirdy.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D233423E94225CC97B4D5561005DCBA16C7B92F0</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D233423E94225CC97B4D5561005DCBA16C7B92F0+++A0C6524</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D233423E94225CC97B4D5561005DCBA16C7B92F0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>birdyNew</string>
+		</dict>
+	</array>
+</dict>
+</plist>

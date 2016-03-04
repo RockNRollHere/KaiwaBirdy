@@ -1,0 +1,19 @@
+<ion-view view-title="スタンプラリー" id="homePage">
+  <ion-header-bar class="bar bar-header bar-calm">
+    <div ng-click="gohome()" class="button button-icon"><i class="icon ion-ios-arrow-left"></i></div>
+    <div class=" title">スタンプラリー</div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="map_content">
+      <img ng-src="{{lastPhoto}}" style="max-width: 100%">
+      <div>{{imagePath}}</div>
+
+
+    </div>
+  </ion-content>
+  <ion-footer-bar>
+    <!--<button class="button button-block button-calm" data-ng-click="submit(filterData.filter)">Add</button>-->
+    <div class="footer_center"><img ng-click="getPhoto()" class="" src="img/camera_btn_nor.png" /><img ng-click="scanBarcode()" class="" src="img/QR_btn__nor.png" /></div>
+  </ion-footer-bar>
+</ion-view>
+

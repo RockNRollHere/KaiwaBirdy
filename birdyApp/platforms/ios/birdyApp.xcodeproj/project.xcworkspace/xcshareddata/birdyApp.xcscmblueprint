@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D233423E94225CC97B4D5561005DCBA16C7B92F0+++A4AF9A0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "D233423E94225CC97B4D5561005DCBA16C7B92F0+++A4AF9A0" : 0,
+    "D233423E94225CC97B4D5561005DCBA16C7B92F0+++A0C6524" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "21E84956-E0FF-48C4-91CA-B83AD08FA551",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "D233423E94225CC97B4D5561005DCBA16C7B92F0+++A4AF9A0" : "birdyNew",
+    "D233423E94225CC97B4D5561005DCBA16C7B92F0+++A0C6524" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "birdyApp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "birdyApp\/platforms\/ios\/birdyApp.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/RockNRollHere\/KaiwaBirdy.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D233423E94225CC97B4D5561005DCBA16C7B92F0+++A0C6524"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/RockNRollHere\/KaiwaBirdy.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D233423E94225CC97B4D5561005DCBA16C7B92F0+++A4AF9A0"
+    }
+  ]
+}

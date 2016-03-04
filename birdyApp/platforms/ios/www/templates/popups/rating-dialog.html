@@ -1,0 +1,157 @@
+    <div class="dialog" id="rating-dialog">
+        <div class="dialog-wrapper">
+            <div class="dialog-head">
+                <h2>Detailed Rating</h2>
+            </div>
+            <div class="dialog-body rating-bars">
+              <ion-scroll>
+                <div class="row">
+                    <span class="icons food-icon"></span>
+                    <span class="rating-value">sdfsafdsf</span>
+                    <div class="col-xs-12">
+                        <p class="progres-label">Food</p>
+                        <div class="progress-bg">
+                            <div class="progress-fill" style="width: {{review.foodRating*10}}%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="icons emp-icon"></span>
+                    <span class="rating-value">ffffff</span>
+                    <div class="col-xs-12">
+                        <p class="progres-label">Service</p>
+                        <div class="progress-bg">
+                            <div class="progress-fill" style="width: {{review.serviceRating*10}}%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                  <span class="icons emp-icon"></span>
+                  <span class="rating-value">ffffff</span>
+                  <div class="col-xs-12">
+                    <p class="progres-label">Service</p>
+                    <div class="progress-bg">
+                      <div class="progress-fill" style="width: {{review.serviceRating*10}}%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="icons emp-icon"></span>
+                  <span class="rating-value">ffffff</span>
+                  <div class="col-xs-12">
+                    <p class="progres-label">Service</p>
+                    <div class="progress-bg">
+                      <div class="progress-fill" style="width: {{review.serviceRating*10}}%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="icons emp-icon"></span>
+                  <span class="rating-value">ffffff</span>
+                  <div class="col-xs-12">
+                    <p class="progres-label">Service</p>
+                    <div class="progress-bg">
+                      <div class="progress-fill" style="width: {{review.serviceRating*10}}%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="icons emp-icon"></span>
+                  <span class="rating-value">ffffff</span>
+                  <div class="col-xs-12">
+                    <p class="progres-label">Service</p>
+                    <div class="progress-bg">
+                      <div class="progress-fill" style="width: {{review.serviceRating*10}}%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="icons emp-icon"></span>
+                  <span class="rating-value">ffffff</span>
+                  <div class="col-xs-12">
+                    <p class="progres-label">Service</p>
+                    <div class="progress-bg">
+                      <div class="progress-fill" style="width: {{review.serviceRating*10}}%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="icons emp-icon"></span>
+                  <span class="rating-value">ffffff</span>
+                  <div class="col-xs-12">
+                    <p class="progres-label">Service</p>
+                    <div class="progress-bg">
+                      <div class="progress-fill" style="width: {{review.serviceRating*10}}%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="icons emp-icon"></span>
+                  <span class="rating-value">ffffff</span>
+                  <div class="col-xs-12">
+                    <p class="progres-label">Service</p>
+                    <div class="progress-bg">
+                      <div class="progress-fill" style="width: {{review.serviceRating*10}}%;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="icons emp-icon"></span>
+                  <span class="rating-value">ffffff</span>
+                  <div class="col-xs-12">
+                    <p class="progres-label">Service</p>
+                    <div class="progress-bg">
+                      <div class="progress-fill" style="width: {{review.serviceRating*10}}%;"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                    <span class="icons group-icon"></span>
+                    <span class="rating-value percent">sdddd</span>
+                    <div class="col-xs-12">
+                        <p class="progres-label good">Good for groups</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="icons-good good-bf"></span>
+                    <span class="rating-value percent">fffff</span>
+                    <div class="col-xs-12">
+                        <p class="progres-label good">Good for breakfast</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="icons-good good-lunch"></span>
+                    <span class="rating-value percent">aaaa</span>
+                    <div class="col-xs-12">
+                        <p class="progres-label good">Good for lunch</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="icons-good good-dinner"></span>
+                    <span class="rating-value percent">ffff</span>
+                    <div class="col-xs-12">
+                        <p class="progres-label good">Good for dinner</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="icons-good good-tk-away"></span>
+                    <span class="rating-value percent">{{review.goodForTakeAway?'Yes':'No'}}</span>
+                    <div class="col-xs-12">
+                        <p class="progres-label good">Good for take away</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="icons-good good-client"></span>
+                    <span class="rating-value percent">{{review.goodForEntertainingClients?'Yes':'No'}}</span>
+                    <div class="col-xs-12">
+                        <p class="progres-label good">Good for entertaining clients</p>
+                    </div>
+                </div>
+              </ion-scroll>
+            </div>
+          <div class="dialog-footer">
+            <a href="javascript:;" class="mdl-close-btn dialog-close" ng-click="hidePopup()">Close</a>
+          </div>
+
+        </div>
