@@ -68,6 +68,7 @@ angular.module('birdyApp', ['ionic', 'birdyApp.controllers', 'birdyApp.services'
       }
       UUID = window.device.uuid;
 
+
     });
   })
 

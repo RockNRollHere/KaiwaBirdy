@@ -12,5 +12,6 @@
 @interface pluginPlugin : CDVPlugin
 
 - (void) openBrowser:(CDVInvokedUrlCommand *)command;
+- (void) getUDID:(CDVInvokedUrlCommand *)command;
 
 @end

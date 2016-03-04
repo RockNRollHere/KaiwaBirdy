@@ -111,6 +111,7 @@ angular.module('birdyApp.controllers', [])
       $rootScope.singleClick = true;
       // get UUID
 
+
       if(!localStorage.uuid){
         localStorage.uuid = Math.ceil(Math.random()*1000000000);
       }

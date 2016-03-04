@@ -46,8 +46,6 @@ angular.module('birdyApp.controllers', [])
 
   .controller('homeCtrl', ['$scope', '$rootScope','$http', '$resource', '$stateParams','$state','$ionicPopover', '$ionicLoading', 'util', 'BirdyService', '$cordovaDevice', '$cordovaBarcodeScanner', '$cordovaCamera',
     function($scope, $rootScope,$http, $resource, $stateParams, $state, $ionicPopover,$ionicLoading, util, BirdyService,$cordovaDevice, $cordovaBarcodeScanner, $cordovaCamera) {
-
-      $scope.uuid3 = openway;
       //document.addEventListener("deviceready", function () {
       //
       //  var device = $cordovaDevice.getDevice();
@@ -112,6 +110,7 @@ angular.module('birdyApp.controllers', [])
       $rootScope.prizeNum = '';
       $rootScope.singleClick = true;
       // get UUID
+
 
       if(!localStorage.uuid){
         localStorage.uuid = Math.ceil(Math.random()*1000000000);

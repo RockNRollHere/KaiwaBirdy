@@ -38,6 +38,7 @@
 
 @property (nonatomic, strong) IBOutlet UIWindow* window;
 @property (nonatomic, strong) IBOutlet CDVViewController* viewController;
+
 -(void)applicationIsCalling:(NSString *) userInfo;
 
 @end

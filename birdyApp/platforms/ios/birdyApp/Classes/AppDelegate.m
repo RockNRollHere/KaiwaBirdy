@@ -86,10 +86,20 @@
     // NOTE: To customize the view's frame size (which defaults to full screen), override
     // [self.viewController viewWillAppear:] in your view controller.
 
+    
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
 
     return YES;
+}
+
+-(NSString*) uuid {
+    CFUUIDRef puuid = CFUUIDCreate( nil );
+    CFStringRef uuidString = CFUUIDCreateString( nil, puuid );
+    NSString * result = (NSString *)CFBridgingRelease(CFStringCreateCopy( NULL, uuidString));
+    CFRelease(puuid);
+    CFRelease(uuidString);
+    return result;
 }
 
 -(void)applicationIsCalling:(NSString *) userInfo {

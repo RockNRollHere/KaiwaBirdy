@@ -62,13 +62,9 @@
     <ion-nav-view></ion-nav-view>
     <script type="text/javaScript">
       var openway=null;
-
       function qrSuccess(str) {
         openway = str;
-        $controller('homeCtrl', ['$scope', '$rootScope', '$http', '$resource', '$stateParams', '$state', '$ionicPopover', '$ionicLoading', 'util', 'BirdyService', '$cordovaDevice', '$cordovaBarcodeScanner', '$cordovaCamera',
-          function ($scope, $rootScope, $http, $resource, $stateParams, $state, $ionicPopover, $ionicLoading, util, BirdyService, $cordovaDevice, $cordovaBarcodeScanner, $cordovaCamera) {
-            $rootScope.uuid = str;
-          }])
+
       }
     </script>
   </body>

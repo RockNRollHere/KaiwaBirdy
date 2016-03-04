@@ -66,7 +66,14 @@ angular.module('birdyApp', ['ionic', 'birdyApp.controllers', 'birdyApp.services'
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
-      UUID = window.device.uuid;
+      //UUID = window.device.uuid;
+      function udidSuccess(data){
+        UUID = data;
+        console.log("UUID",UUID);
+      }
+
+      cordova.exec(udidSuccess,udidFailure,"pluginPlugin","getUDID",[]);
+
 
     });
   })
